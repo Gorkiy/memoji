@@ -5,9 +5,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: darkgrey;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.game-field {
+  margin: 100px auto;
+  padding: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 680px;
+  border-radius: 4px;
+  background-color: black;
+}
+
+.game-field__card {
+  margin: 20px;
+  width: 130px;
+  height: 130px;
+  background-image: linear-gradient(to top right, #22AB93, #19688D);
+  box-sizing: border-box;
+  border: 5px solid white;
+  border-radius: 2px;
 }
