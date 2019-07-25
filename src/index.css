@@ -1,3 +1,13 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -8,28 +18,37 @@ body {
   background-color: darkgrey;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .game-field {
   margin: 100px auto;
   padding: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  width: 680px;
+  width: 780px;
   border-radius: 4px;
   background-color: black;
 }
 
-.game-field__card {
+.game-field__tile {
   margin: 20px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 130px;
   height: 130px;
-  background-image: linear-gradient(to top right, #22AB93, #19688D);
-  box-sizing: border-box;
   border: 5px solid white;
   border-radius: 2px;
+}
+
+.card_back {
+  background-image: linear-gradient(to top right, #22AB93, #19688D);
+}
+
+.card_front {
+  font-size: 70px;
+  background-color: white;
+  text-align: center;
 }
