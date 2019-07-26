@@ -19,7 +19,7 @@ body {
 }
 
 .game-field {
-  margin: 100px auto;
+  margin: 100px auto 50px;
   padding: 50px;
   display: flex;
   flex-wrap: wrap;
@@ -51,4 +51,14 @@ body {
   font-size: 70px;
   background-color: white;
   text-align: center;
+}
+
+.card_matched {
+  opacity: .5;
+}
+
+.time-limit {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
 }

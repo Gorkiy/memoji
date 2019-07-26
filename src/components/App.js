@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import Card from './Card';
 import { shuffle } from 'lodash';
+import Card from './Card';
+import TimeLimit from './TimeLimit';
 
-const emojis = shuffle(['🐶', '🐶', '🐱', '🐱', '🐭', '🐭', '🐹', '🐹', '🐰', '🐰', '🐻', '🐻']);
-// const emojis = shuffle(['🐶', '🐶', '🐱', '🐱']);
+const gameConfig = {
+  totalCards: 12,
+  cards: shuffle(['🐶', '🐶', '🐱', '🐱', '🐭', '🐭', '🐹', '🐹', '🐰', '🐰', '🐻', '🐻']),
+  timeLimit: 30  
+}
 
 class App extends Component {
   state = { 
     gameStarted: false,
-    cardsLeft: 12,
+    cardsLeft: gameConfig.totalCards,
+    timeLeft: gameConfig.timeLimit,
     cardsData: {},
     cards: [],
     exposedCount: 0,
@@ -16,17 +21,17 @@ class App extends Component {
   };
   
   componentDidMount() {
-    const data = this.getCardsData(emojis);
+    const data = this.getCardsData(gameConfig.cards);
     this.setState({ cardsData: data });
     this.setState( { cards: this.getCardComponents(data) });
   }
   
-  getCardsData(emojis) {
+  getCardsData(cardFaces) {
     let data = {};
-    for (let i = 0; i < emojis.length; i++) {
+    for (let i = 0; i < cardFaces.length; i++) {
       data[i] = {
         id: i,
-        cardFace: emojis[i],
+        cardFace: cardFaces[i],
         isMatched: false,
         exposed: false
       }
@@ -54,7 +59,9 @@ class App extends Component {
     const data = this.state.cardsData;
     data[id1]['isMatched'] = true;
     data[id2]['isMatched'] = true;
+    this.setState({ cardsLeft: this.state.cardsLeft - 2 });
     this.update(data);
+    console.log(this.state.cardsLeft);
   }
   
   switchExposed(id1, id2) {
@@ -69,7 +76,24 @@ class App extends Component {
     this.setState( { cards: newData });
   }
   
+  runGame() {
+    if (!this.state.gameStarted && this.state.cardsLeft > 0) {
+      this.setState({ gameStarted: true });
+      const timerId = setInterval(function() {
+        this.setState({ timeLeft: this.state.timeLeft - 1 });
+        if (this.state.timeLeft <= 0) {
+          clearInterval(timerId);
+          this.setState({ gameStarted: false });
+        }
+      }.bind(this), 1000);
+    } else {
+      this.setState({ gameStarted: false });
+    }
+  }
+  
   onCardClick = async (card) => {
+    this.runGame();
+    
     this.state.exposedCards.push(card);
     await this.setState({ exposedCount: this.state.exposedCount + 1 });
     
@@ -91,8 +115,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="game-field">
-        {this.state.cards}
+      <div>
+        <div className="game-field">
+          {this.state.cards}
+        </div>
+        <TimeLimit gameStarted={this.state.gameStarted} timeLeft={this.state.timeLeft}/>
       </div>
     );
   }

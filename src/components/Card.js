@@ -6,6 +6,7 @@ import CardBack from './CardBack';
 class Card extends Component {
   constructor(props) {
     super(props);
+    this.cardRef = React.createRef();
     this.state = {
       isFlipped: false,
       exposed: false
@@ -30,30 +31,20 @@ class Card extends Component {
     }.bind(this), 1000);
   }
   
-  handleClick() {
+  handleClick() {    
     if (!this.state.isFlipped) {
       this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
       this.props.onClick(this);
     }
   }
-  
-  renderCard() {
-    if (this.state.isMatched) {
-      return <CardFront cardFace={this.props.cardFace} />   
-    } else {
-      return (
-          <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-            <CardFront key="back" onClick={this.handleClick} cardFace={this.props.cardFace} />   
-            <CardBack key="front" onClick={this.handleClick} />
-          </ReactCardFlip>
-          )
-    }
-  }
 
   render() {
     return (
-      <div className="game-field__tile">
-        { this.renderCard() }
+      <div className="game-field__tile" ref={this.cardRef}>        
+        <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
+          <CardFront key="back" onClick={this.handleClick} cardFace={this.props.cardFace} isMatched={this.props.isMatched}/>
+          <CardBack key="front" onClick={this.handleClick} />
+        </ReactCardFlip>
       </div>
     );
   }
