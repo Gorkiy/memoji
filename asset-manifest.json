@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/memoji2/static/css/main.c0837efc.chunk.css",
-    "main.js": "/memoji2/static/js/main.31ed6395.chunk.js",
-    "main.js.map": "/memoji2/static/js/main.31ed6395.chunk.js.map",
-    "runtime~main.js": "/memoji2/static/js/runtime~main.be4d794d.js",
-    "runtime~main.js.map": "/memoji2/static/js/runtime~main.be4d794d.js.map",
-    "static/js/2.3f0692bb.chunk.js": "/memoji2/static/js/2.3f0692bb.chunk.js",
-    "static/js/2.3f0692bb.chunk.js.map": "/memoji2/static/js/2.3f0692bb.chunk.js.map",
-    "index.html": "/memoji2/index.html",
-    "precache-manifest.59cfa630ee895a41793a85811cfc48f1.js": "/memoji2/precache-manifest.59cfa630ee895a41793a85811cfc48f1.js",
-    "service-worker.js": "/memoji2/service-worker.js",
-    "static/css/main.c0837efc.chunk.css.map": "/memoji2/static/css/main.c0837efc.chunk.css.map"
+    "main.css": "/memoji/static/css/main.c0837efc.chunk.css",
+    "main.js": "/memoji/static/js/main.4532b93b.chunk.js",
+    "main.js.map": "/memoji/static/js/main.4532b93b.chunk.js.map",
+    "runtime~main.js": "/memoji/static/js/runtime~main.6c14e1d8.js",
+    "runtime~main.js.map": "/memoji/static/js/runtime~main.6c14e1d8.js.map",
+    "static/js/2.3f0692bb.chunk.js": "/memoji/static/js/2.3f0692bb.chunk.js",
+    "static/js/2.3f0692bb.chunk.js.map": "/memoji/static/js/2.3f0692bb.chunk.js.map",
+    "index.html": "/memoji/index.html",
+    "precache-manifest.aa16890328afbb1814b935e97d1e8109.js": "/memoji/precache-manifest.aa16890328afbb1814b935e97d1e8109.js",
+    "service-worker.js": "/memoji/service-worker.js",
+    "static/css/main.c0837efc.chunk.css.map": "/memoji/static/css/main.c0837efc.chunk.css.map"
   }
 }
