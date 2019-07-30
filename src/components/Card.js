@@ -27,7 +27,7 @@ class Card extends Component {
   flip() {
     setTimeout(function() {
       this.setState(prevState => ({ isFlipped: !prevState.isFlipped }));
-    }.bind(this), 1000);
+    }.bind(this), 600);
   }
   
   handleClick() {

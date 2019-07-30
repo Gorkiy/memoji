@@ -6,7 +6,10 @@ class GameResults extends Component {
     super(props);
     this.state = {
       gameEnded: false,
-      gifURL: ""
+      gif: {
+        src: '',
+        alt: ''
+      }
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -38,28 +41,35 @@ class GameResults extends Component {
   
   async getGif() {
     let url = '';
+    let alt = '';
     if (this.props.outcome === 'win' ) {
       const win = new Gif('win', 10);
       await win.setGifURL();
-      url = win.gifURL;
+      url = win.gif.src;
+      alt = win.gif.alt;
     }
     
     if (this.props.outcome === 'lose' ) {
       const fail = new Gif('fail', 10);
       await fail.setGifURL();
-      url = fail.gifURL;
+      url = fail.gif.src;
+      alt = fail.gif.alt;
     }
-    this.setState({ gifURL: url});
+    
+    this.setState({ gif: {
+      src: url,
+      alt: alt
+    }});
   }
   
   render() {
-    const matchedStyle = this.props.gameEnded ? "modal_show" : "";    
+    const matchedStyle = this.props.gameEnded ? "modal_show" : "";
     
     return (
       <div className={`modal ${matchedStyle}`}>
         <div className="game-results">
           <h2 className="game-results__title">{this.renderOutcome()}</h2>
-          <div className="game-results__gif"><img src={this.state.gifURL} /></div>
+          <div className="game-results__gif"><img src={this.state.gif.src} alt={this.state.gif.alt} /></div>
           <button className="game-results__button" type="button" onClick={this.handleClick}>New Game
           </button>
         </div>

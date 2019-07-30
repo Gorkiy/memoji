@@ -5,7 +5,7 @@ class Gif {
   constructor(query, limit) {
     this.query = query;
     this.limit = limit;
-    this.gifURL = null;
+    this.gif = null
   }
   
   async getGIFs(query, limit) {
@@ -16,10 +16,19 @@ class Gif {
   }
   
   async setGifURL() {
+    const imageNum = this.getRandomImage();
     const images = await this.getGIFs(this.query, this.limit);
-    // console.log(images);
-    const url = await images[this.getRandomImage()]['images']['original']['url'];
+    
+    const img = images[imageNum];
+    console.log(img);
+    const url = img['images']['original']['url'];
+    const alt = img['title'];
+    
     this.gifURL = url;
+    this.gif = {
+      src: url,
+      alt: alt
+    }
   }
   
   getRandomImage() {
