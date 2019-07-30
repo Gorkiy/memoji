@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6836f7ba5da1c2e490a99ba024fad1cf",
+    "revision": "428c8a979901254e9c0ee204811b5be6",
     "url": "/memoji/index.html"
   },
   {
-    "revision": "a0ee524a79c6b57be02d",
+    "revision": "c28754e509c7b3a4b3ba",
     "url": "/memoji/static/css/main.c0837efc.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/memoji/static/js/2.3f0692bb.chunk.js"
   },
   {
-    "revision": "a0ee524a79c6b57be02d",
-    "url": "/memoji/static/js/main.907d00de.chunk.js"
+    "revision": "c28754e509c7b3a4b3ba",
+    "url": "/memoji/static/js/main.96fe2b9f.chunk.js"
   },
   {
     "revision": "c2ca469e3b26b96c47d1",
