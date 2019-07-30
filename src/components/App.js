@@ -7,7 +7,7 @@ import GameResults from './GameResults';
 const gameConfig = {
   totalCards: 12,
   cards: ['🐶', '🐶', '🐱', '🐱', '🐭', '🐭', '🐹', '🐹', '🐰', '🐰', '🐻', '🐻'],
-  timeLimit: 10
+  timeLimit: 20
 }
 
 class App extends Component {
@@ -20,7 +20,8 @@ class App extends Component {
     cardsData: {},
     cards: [],
     exposedCount: 0,
-    exposedCards: []
+    exposedCards: [],
+    outcome: ''
   };
   
   componentDidMount() {
@@ -30,6 +31,7 @@ class App extends Component {
   initNewGame = async () => {
     this.setState({ gameStarted: false });
     this.setState({ gameEnded: false });
+    this.setState({ outcome: '' });
     this.setState({ timeLeft: gameConfig.timeLimit });
     this.setState({ cardsLeft: gameConfig.totalCards });
     //Generate new data
@@ -104,6 +106,12 @@ class App extends Component {
   }
   
   endGame() {
+    if (this.state.cardsLeft === 0) {
+      this.setState({ outcome: 'win' });
+    } else {
+      this.setState({ outcome: 'lose' });
+    }
+    
     this.setState({ gameEnded: true });
     this.setState({ exposedCount: 0 });
     this.setState({ exposedCards: [] });
@@ -149,7 +157,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <GameResults gameEnded={this.state.gameEnded} onButtonClick={this.onButtonClick}/>
+        <h1 className="game-name">Memoji</h1>
+        <GameResults gameEnded={this.state.gameEnded} outcome={this.state.outcome} onButtonClick={this.onButtonClick}/>
         <div className="game-field">
           {this.state.cards}
         </div>
