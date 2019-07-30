@@ -1,5 +1,5 @@
 const API = 'Gg8myGJJ00rKTsHqkNwPNlmZsV92EHJB';
-const searchURL = 'http://api.giphy.com/v1/gifs/search?q=';
+const searchURL = '//api.giphy.com/v1/gifs/search?q=';
 
 class Gif {
   constructor(query, limit) {
@@ -20,7 +20,6 @@ class Gif {
     const images = await this.getGIFs(this.query, this.limit);
     
     const img = images[imageNum];
-    console.log(img);
     const url = img['images']['original']['url'];
     const alt = img['title'];
     
