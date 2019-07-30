@@ -7,7 +7,7 @@ import GameResults from './GameResults';
 const gameConfig = {
   totalCards: 12,
   cards: ['🐶', '🐶', '🐱', '🐱', '🐭', '🐭', '🐹', '🐹', '🐰', '🐰', '🐻', '🐻'],
-  timeLimit: 20
+  timeLimit: 10
 }
 
 class App extends Component {
@@ -64,6 +64,7 @@ class App extends Component {
         exposed={card.exposed} 
         onClick={this.onCardClick}
         exposedCount={this.state.exposedCount}
+        gameStarted={this.state.gameStarted}
         gameEnded={this.state.gameEnded}
       />);
     }
@@ -80,7 +81,7 @@ class App extends Component {
   
   markAsExposed(id) {
     const data = this.state.cardsData;
-    data[id]['exposed'] = !data[id]['exposed'];
+    data[id]['exposed'] = true;
     this.update(data);
   }
   
@@ -106,6 +107,7 @@ class App extends Component {
     this.setState({ gameEnded: true });
     this.setState({ exposedCount: 0 });
     this.setState({ exposedCards: [] });
+    this.update(this.state.cardsData);
   }
   
   async update(data) {
@@ -115,13 +117,13 @@ class App extends Component {
   
   onCardClick = async (card) => {
     if (!this.state.gameStarted && !this.state.gameEnded) {
-      this.runGame();
+      await this.runGame();
     }
     
     this.state.exposedCards.push(card);
     this.markAsExposed(card.props.id);
     await this.setState({ exposedCount: this.state.exposedCount + 1 });
-    
+    //Compare exposed cards and check for a match
     if (this.state.exposedCount === 2) {
       let first = this.state.exposedCards[0];
       let second = this.state.exposedCards[1];
@@ -134,9 +136,11 @@ class App extends Component {
     }
   }
   
-  onButtonClick = (card) => {
-    this.setState({ cards: this.getCardComponents(this.state.cardsData) });
-    // Temp hack in order not to reveal new card faces
+  onButtonClick = async (card) => {
+    //Wait for update in order to flip back exposed cards in previous match
+    await this.setState({ gameStarted: false });
+    await this.update(this.state.cardsData);
+    //Wait for smooth card faces change
     setTimeout(function() {
       this.initNewGame();
     }.bind(this), 200);

@@ -14,12 +14,13 @@ class Card extends Component {
   }
   
   componentDidUpdate(prevProps) {
-    if (this.props.exposed && this.props.exposedCount >= 1) {
+    if (this.props.exposed && this.props.exposedCount >= 1 && !this.props.gameEnded) {
       this.flip();
     }
-    
-    if (this.props.gameEnded && this.state.isFlipped) {
-      this.setState( {isFlipped: false} );
+    //Triggers when the "new game" button is clicked
+    // Flip back all exposed cards for a new match
+    if (!this.props.gameStarted && this.props.gameEnded && this.state.isFlipped) {
+      this.setState({ isFlipped: false });
     }
   }
   
