@@ -2,7 +2,7 @@
   "name": "memoji",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://gorkiy.github.io/memoji/",
+  "homepage": "https://gorkiy.github.io/memoji",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "lodash": "^4.17.15",

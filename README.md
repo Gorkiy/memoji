@@ -6,7 +6,7 @@ This little game is inspired by Yandex frontend course on Coursera. My goal was 
 
 ## Demo
 
-In the project directory, you can run:
+Check [live demo](https://gorkiy.github.io/memoji/) or In the project directory, you can run:
 
 ### `npm start`
 
