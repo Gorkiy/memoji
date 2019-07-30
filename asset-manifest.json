@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/memoji/static/css/main.c0837efc.chunk.css",
+    "main.js": "/memoji/static/js/main.4532b93b.chunk.js",
+    "main.js.map": "/memoji/static/js/main.4532b93b.chunk.js.map",
+    "runtime~main.js": "/memoji/static/js/runtime~main.6c14e1d8.js",
+    "runtime~main.js.map": "/memoji/static/js/runtime~main.6c14e1d8.js.map",
+    "static/js/2.3f0692bb.chunk.js": "/memoji/static/js/2.3f0692bb.chunk.js",
+    "static/js/2.3f0692bb.chunk.js.map": "/memoji/static/js/2.3f0692bb.chunk.js.map",
+    "index.html": "/memoji/index.html",
+    "precache-manifest.aa16890328afbb1814b935e97d1e8109.js": "/memoji/precache-manifest.aa16890328afbb1814b935e97d1e8109.js",
+    "service-worker.js": "/memoji/service-worker.js",
+    "static/css/main.c0837efc.chunk.css.map": "/memoji/static/css/main.c0837efc.chunk.css.map"
+  }
+}
